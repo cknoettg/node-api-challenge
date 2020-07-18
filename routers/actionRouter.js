@@ -1,12 +1,11 @@
 const express = require('express');
 const Actions = require('../data/helpers/actionModel');
-const Projects = require('../data/helpers/projectModel');
 
 const router = express.Router();
 
 router.get('/', (req, res) => {
   res.status(200).json({
-    message: "No actions can be provided without a project_id"
+    message: "Success..."
   })
 })
 
@@ -18,7 +17,7 @@ router.get('/:id', validateId(), (req, res) => {
     .catch(err => {
       console.log('Error: ', err);
       res.status(500).json({
-        errorMessage: "Could not retrieve action with this id"
+        errorMessage: "Could not retrieve action by id..."
       })
     })
 })
@@ -28,7 +27,7 @@ router.post('/', (req, res) => {
       .then(() => {
         if (!req.body.project_id || !req.body.description) {
           res.status(400).json({
-            errorMessage: "Missing a required field"
+            errorMessage: "Missing id or description..."
           })
         } else {
           Actions.insert(req.body)
@@ -38,7 +37,7 @@ router.post('/', (req, res) => {
             .catch(err => {
               console.log("Error: ", err);
               res.status(500).json({
-                errorMessage: "Could not add action"
+                errorMessage: "Could not add..."
               })
             })
         }
@@ -46,7 +45,7 @@ router.post('/', (req, res) => {
       .catch(err => {
         console.log("Error: ", err);
         res.status(500).json({
-          errorMessage: "Something went wrong, rip"
+          errorMessage: "Could not connect..."
         })
       })
   })
@@ -59,7 +58,7 @@ router.put('/:id', validateId(), (req, res) => {
     .catch(err => {
       console.log("Error: ", err);
       res.status(500).json({
-        errorMessage: "Could not update action"
+        errorMessage: "Could not update..."
       })
     })
 })
@@ -68,13 +67,13 @@ router.delete('/:id', validateId(), (req, res) => {
   Actions.remove(req.params.id)
     .then(() => {
       res.status(200).json({
-        message: "action removed from database"
+        message: "Successfully removed..."
       })
     })
     .catch(err => {
       console.log("Error: ", err);
       res.status(500).json({
-        errorMessage: "Could not remove action"
+        errorMessage: "Could not remove..."
       })
     })
 })
@@ -88,14 +87,14 @@ function validateId() {
           next();
         } else {
           res.status(400).json({
-            errorMessage: "Invalid id"
+            errorMessage: "Invalid id..."
           })
         }
       })
       .catch(err => {
         console.log("Error: ", err);
         res.status(500).json({
-          errorMessage: "Problem retrieving action"
+          errorMessage: "Could not connect..."
         })
       })
   }
