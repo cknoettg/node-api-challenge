@@ -40,13 +40,24 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ] Mention two parts of Express that you learned about this week.
 
+Express makes routing and middleware easy to handle.
+If we create an express server, our http requests like GET, POST, etc. become fairly trivial to handle. We can easily work with middleware using request and response parameters.
+
 - [ ] Describe Middleware?
+
+Middleware connects our initial http requests and our final routes - it stands in the middle between them.
 
 - [ ] Describe a Resource?
 
+A resource is a web-accessible piece of data. If we try to connect to a remote html file, or a piece of remote data, and can't connect, then we may get a "resource not found" error message.
+
 - [ ] What can the API return to help clients know if a request was successful?
 
+Success code.
+
 - [ ] How can we partition our application into sub-applications?
+
+We can use routes to partition a single-page application into sub-applications.
 
 ## Minimum Viable Product
 
